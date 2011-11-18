@@ -110,7 +110,7 @@ function s:CdIfDirectory(directory)
   endif
 
   if directory
-    NERDTree
+    "NERDTree " don't auto-open NERDTree, since that's so freaking annoying.
     wincmd p
     bd
   endif
@@ -166,14 +166,14 @@ endfunction
 
 " Public NERDTree-aware versions of builtin functions
 function ChangeDirectory(dir, ...)
-  execute "cd " . fnameescape(a:dir)
-  let stay = exists("a:1") ? a:1 : 1
+  "execute "cd " . fnameescape(a:dir)
+  "let stay = exists("a:1") ? a:1 : 1
 
-  NERDTree
+  "NERDTree
 
-  if !stay
-    wincmd p
-  endif
+  "if !stay
+    "wincmd p
+  "endif
 endfunction
 
 function Touch(file)
@@ -212,13 +212,13 @@ ruby << RUBY
   home        = pwd == File.expand_path("~")
 
   if home || Regexp.new("^" + Regexp.escape(pwd)) !~ destination
-    VIM.command(%{call ChangeDirectory(fnamemodify(a:file, ":h"), 0)})
+    #VIM.command(%{call ChangeDirectory(fnamemodify(a:file, ":h"), 0)})
   end
 RUBY
 endfunction
 
 " Define the NERDTree-aware aliases
-call s:DefineCommand("cd", "ChangeDirectory")
+"call s:DefineCommand("cd", "ChangeDirectory")
 call s:DefineCommand("touch", "Touch")
 call s:DefineCommand("rm", "Remove")
 call s:DefineCommand("e", "Edit")
