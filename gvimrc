@@ -80,7 +80,7 @@ endfunction
 " Project Tree
 if exists("loaded_nerd_tree")
   autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
-  autocmd FocusGained * call s:UpdateNERDTree()
+  " autocmd FocusGained * call s:UpdateNERDTree()
   autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 endif
 
@@ -113,8 +113,8 @@ function s:CdIfDirectory(directory)
 
   if directory
     "NERDTree " don't auto-open NERDTree, since that's so freaking annoying.
-    wincmd p
-    bd
+    "wincmd p
+    "bd
   endif
 
   if explicitDirectory
